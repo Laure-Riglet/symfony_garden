@@ -1,0 +1,6 @@
+// 1. Écrase les variables par défaut AVANT d’importer Bootstrap
+$primary: #3cd8b1; // ta couleur principale personnalisée
+$font-family-base: 'Segoe UI', sans-serif;
+
+// 2. Importe Bootstrap
+@import "bootstrap/scss/bootstrap";
