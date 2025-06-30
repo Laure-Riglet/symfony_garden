@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}PlantBlueprint index{% endblock %}
+
+{% block body %}
+    <h1>PlantBlueprint index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Species</th>
+                <th>Sun_requirements</th>
+                <th>Watering_needs</th>
+                <th>Germination_months</th>
+                <th>Planting_months</th>
+                <th>Flowering_months</th>
+                <th>Harvest_months</th>
+                <th>Hardiness</th>
+                <th>CreatedAt</th>
+                <th>UpdatedAt</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for plant_blueprint in plant_blueprints %}
+            <tr>
+                <td>{{ plant_blueprint.id }}</td>
+                <td>{{ plant_blueprint.name }}</td>
+                <td>{{ plant_blueprint.species }}</td>
+                <td>{{ plant_blueprint.sunRequirements }}</td>
+                <td>{{ plant_blueprint.wateringNeeds }}</td>
+                <td>{{ plant_blueprint.germinationMonths ? plant_blueprint.germinationMonths|json_encode : '' }}</td>
+                <td>{{ plant_blueprint.plantingMonths ? plant_blueprint.plantingMonths|json_encode : '' }}</td>
+                <td>{{ plant_blueprint.floweringMonths ? plant_blueprint.floweringMonths|json_encode : '' }}</td>
+                <td>{{ plant_blueprint.harvestMonths ? plant_blueprint.harvestMonths|json_encode : '' }}</td>
+                <td>{{ plant_blueprint.hardiness }}</td>
+                <td>{{ plant_blueprint.createdAt ? plant_blueprint.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ plant_blueprint.updatedAt ? plant_blueprint.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_plant_blueprint_show', {'id': plant_blueprint.id}) }}">show</a>
+                    <a href="{{ path('app_plant_blueprint_edit', {'id': plant_blueprint.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="13">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_plant_blueprint_new') }}">Create new</a>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tableau de bord{% endblock %}
+
+{% block body %}
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="h3">Bienvenue {{ app.user.firstName ?? app.user.userIdentifier }} 👋</h1>
+    </div>
+
+    <p class="lead">Ceci est votre tableau de bord. Vous pourrez bientôt y gérer vos plantes 🌱.</p>
+
+    {# Tu pourras ajouter ici des cards, tableaux, ou composants Bootstrap #}
+
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}PlantBlueprint{% endblock %}
+
+{% block body %}
+    <h1>PlantBlueprint</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ plant_blueprint.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ plant_blueprint.name }}</td>
+            </tr>
+            <tr>
+                <th>Species</th>
+                <td>{{ plant_blueprint.species }}</td>
+            </tr>
+            <tr>
+                <th>Sun_requirements</th>
+                <td>{{ plant_blueprint.sunRequirements }}</td>
+            </tr>
+            <tr>
+                <th>Watering_needs</th>
+                <td>{{ plant_blueprint.wateringNeeds }}</td>
+            </tr>
+            <tr>
+                <th>Germination_months</th>
+                <td>{{ plant_blueprint.germinationMonths ? plant_blueprint.germinationMonths|json_encode : '' }}</td>
+            </tr>
+            <tr>
+                <th>Planting_months</th>
+                <td>{{ plant_blueprint.plantingMonths ? plant_blueprint.plantingMonths|json_encode : '' }}</td>
+            </tr>
+            <tr>
+                <th>Flowering_months</th>
+                <td>{{ plant_blueprint.floweringMonths ? plant_blueprint.floweringMonths|json_encode : '' }}</td>
+            </tr>
+            <tr>
+                <th>Harvest_months</th>
+                <td>{{ plant_blueprint.harvestMonths ? plant_blueprint.harvestMonths|json_encode : '' }}</td>
+            </tr>
+            <tr>
+                <th>Hardiness</th>
+                <td>{{ plant_blueprint.hardiness }}</td>
+            </tr>
+            <tr>
+                <th>CreatedAt</th>
+                <td>{{ plant_blueprint.createdAt ? plant_blueprint.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>UpdatedAt</th>
+                <td>{{ plant_blueprint.updatedAt ? plant_blueprint.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_plant_blueprint_index') }}">back to list</a>
+
+    <a href="{{ path('app_plant_blueprint_edit', {'id': plant_blueprint.id}) }}">edit</a>
+
+    {{ include('plant_blueprint/_delete_form.html.twig') }}
+{% endblock %}

@@ -37,6 +37,9 @@ class Plant
     #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
 
+    #[ORM\ManyToOne]
+    private ?PlantBlueprint $PlantBlueprint = null;
+
     public function __construct()
     {
         $this->tasks = new ArrayCollection();
@@ -133,6 +136,18 @@ class Plant
     public function setUser(?User $user): static
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getPlantBlueprint(): ?PlantBlueprint
+    {
+        return $this->PlantBlueprint;
+    }
+
+    public function setPlantBlueprint(?PlantBlueprint $PlantBlueprint): static
+    {
+        $this->PlantBlueprint = $PlantBlueprint;
 
         return $this;
     }

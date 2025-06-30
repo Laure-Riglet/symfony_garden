@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}TaskBlueprint index{% endblock %}
+
+{% block body %}
+    <h1>TaskBlueprint index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>CreatedAt</th>
+                <th>UpdatedAt</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for task_blueprint in task_blueprints %}
+            <tr>
+                <td>{{ task_blueprint.id }}</td>
+                <td>{{ task_blueprint.title }}</td>
+                <td>{{ task_blueprint.description }}</td>
+                <td>{{ task_blueprint.createdAt ? task_blueprint.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ task_blueprint.updatedAt ? task_blueprint.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_task_blueprint_show', {'id': task_blueprint.id}) }}">show</a>
+                    <a href="{{ path('app_task_blueprint_edit', {'id': task_blueprint.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_task_blueprint_new') }}">Create new</a>
+{% endblock %}

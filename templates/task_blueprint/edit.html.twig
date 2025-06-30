@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit TaskBlueprint{% endblock %}
+
+{% block body %}
+    <h1>Edit TaskBlueprint</h1>
+
+    {{ include('task_blueprint/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_task_blueprint_index') }}">back to list</a>
+
+    {{ include('task_blueprint/_delete_form.html.twig') }}
+{% endblock %}
